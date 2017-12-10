@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -72,7 +72,11 @@
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="439" height="427"/>
             <connections>
+                <outlet property="contentLabel" destination="BoV-aJ-9k5" id="sLh-Ke-q4a"/>
+                <outlet property="headButton" destination="h84-Uc-Yjw" id="isU-H0-ahN"/>
+                <outlet property="nameButton" destination="LdD-ZD-o90" id="EiX-4j-FCi"/>
                 <outlet property="shadowView" destination="1p4-Dr-Eqs" id="Gtx-my-k5F"/>
+                <outlet property="timeLabel" destination="fDr-b2-vwb" id="K87-IH-ZL0"/>
             </connections>
             <point key="canvasLocation" x="-224" y="120"/>
         </collectionViewCell>

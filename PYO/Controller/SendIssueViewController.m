@@ -54,6 +54,9 @@
             NSLog(@"%@", error);
         } else {
             NSLog(@"%@", data);
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_ISSUE_NOTIFICATION object:nil];
+            }];
         }
     }];
 }

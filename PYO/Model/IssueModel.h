@@ -21,7 +21,7 @@
 @property (nonatomic, copy  ) NSString *topicUrl;
 
 
-+ (instancetype)issueWithDict:(NSDictionary *)dict;
-+ (NSArray *)issueArrayWithDictArray:(NSArray *)dictArray;
+//+ (instancetype)issueWithDict:(NSDictionary *)dict;
+//+ (NSArray *)issueArrayWithDictArray:(NSArray *)dictArray;
 
 @end

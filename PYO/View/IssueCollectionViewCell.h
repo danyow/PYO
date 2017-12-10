@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class IssueModel;
+
 @interface IssueCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) IssueModel *issue;
 
 @end

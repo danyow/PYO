@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B3565E9C616F88310861DC9E /* libPods-PYO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 280065F4408B763EE2A9E9E9 /* libPods-PYO.a */; };
 		F40D197E1FDB6A8B0092130B /* IssueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F40D197D1FDB6A8B0092130B /* IssueModel.m */; };
+		F43BD7A11FDD852300602451 /* ConstSizeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BD7A01FDD852300602451 /* ConstSizeButton.m */; };
 		F43D3A351FDC1C100031D21E /* NSObject+NSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */; };
 		F43D3AB01FDC37D60031D21E /* MO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A961FDC37D60031D21E /* MO.cpp */; };
 		F43D3AB11FDC37D60031D21E /* I18nUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A971FDC37D60031D21E /* I18nUtils.cpp */; };
@@ -44,6 +45,9 @@
 		91C5F849017F2CC3A68E96F7 /* Pods-PYO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PYO.release.xcconfig"; path = "Pods/Target Support Files/Pods-PYO/Pods-PYO.release.xcconfig"; sourceTree = "<group>"; };
 		F40D197C1FDB6A8B0092130B /* IssueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueModel.h; sourceTree = "<group>"; };
 		F40D197D1FDB6A8B0092130B /* IssueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueModel.m; sourceTree = "<group>"; };
+		F43BD79E1FDD73DD00602451 /* StringConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringConst.h; sourceTree = "<group>"; };
+		F43BD79F1FDD852300602451 /* ConstSizeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstSizeButton.h; sourceTree = "<group>"; };
+		F43BD7A01FDD852300602451 /* ConstSizeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConstSizeButton.m; sourceTree = "<group>"; };
 		F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSLog.m"; sourceTree = "<group>"; };
 		F43D3A341FDC1C100031D21E /* NSObject+NSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSLog.h"; sourceTree = "<group>"; };
 		F43D3A961FDC37D60031D21E /* MO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MO.cpp; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				F45E4F121FD58FE7002E5EEB /* ColorConst.h */,
 				F45E4F131FD58FE7002E5EEB /* ColorConst.m */,
 				F4DC4DB91FDAE8DD0006D7ED /* PYO.pch */,
+				F43BD79E1FDD73DD00602451 /* StringConst.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -226,6 +231,8 @@
 				F4D2FE711FD8200900D83091 /* IssueCollectionViewCell.h */,
 				F4D2FE721FD8200900D83091 /* IssueCollectionViewCell.m */,
 				F4D2FE731FD8200900D83091 /* IssueCollectionViewCell.xib */,
+				F43BD79F1FDD852300602451 /* ConstSizeButton.h */,
+				F43BD7A01FDD852300602451 /* ConstSizeButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43D3A351FDC1C100031D21E /* NSObject+NSLog.m in Sources */,
+				F43BD7A11FDD852300602451 /* ConstSizeButton.m in Sources */,
 				F4D2FE7B1FD82D0500D83091 /* LoginViewController.m in Sources */,
 				F4D2FE681FD810DB00D83091 /* SendIssueViewController.m in Sources */,
 				F4D153D21FD580B200A6360C /* IssueViewController.m in Sources */,

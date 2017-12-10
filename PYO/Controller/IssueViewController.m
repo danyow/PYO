@@ -44,15 +44,19 @@
     if (!userInfo.logined) {
         [self showLoginViewController];
     } else {
-        [LoginViewController loginWithLoginStr:userInfo.userLoginStr password:userInfo.userPassword callback:^(NSDictionary *data, NSError *error) {
-            if (error) {
-                [self showLoginViewController];
-            } else {
-                [self hideMaskView];
-            }
-        }];
+        // 取消注册
+//        [LoginViewController loginWithLoginStr:userInfo.userLoginStr password:userInfo.userPassword callback:^(NSDictionary *data, NSError *error) {
+//            if (error) {
+//                [self showLoginViewController];
+//            } else {
+//                [self hideMaskView];
+//            }
+//        }];
+        [self hideMaskView];
     }
 }
+
+#pragma mark -  private method
 
 - (void)showLoginViewController
 {
@@ -93,14 +97,32 @@
         make.edges.equalTo(self.view);
     }];
     [self getData];
+    [self registerNotification];
 }
+
 - (void)initView
-{  
+{
+//    UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, HeadIconSize, HeadIconSize)];
+//    temp.image = [UIImage imageNamed:@"head"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.headButton];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"head"] style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:self.sendButton];
+    
+    self.navigationItem.rightBarButtonItem.width = HeadIconSize;
+    self.navigationItem.leftBarButtonItem.width = HeadIconSize;
     
     [self.view setBackgroundColor:BackgroundColor];
     self.navigationItem.titleView = self.navTitleLabel;
+}
+
+- (void)registerNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateIssue) name:UPDATE_ISSUE_NOTIFICATION object:nil];
+}
+
+- (void)updateIssue
+{
+    [self getData];
 }
 
 #pragma mark -  networking
@@ -114,7 +136,7 @@
             NSLog(@"%@", error);
         } else {
             NSLog(@"%@", data[@"data"]);
-            self.issueArray = [IssueModel issueArrayWithDictArray:data[@"data"]] ;
+            self.issueArray = [[NSArray yy_modelArrayWithClass:[IssueModel class] json:data[@"data"]] copy];
             [self.collectionView reloadData];
         }
     }];
@@ -130,6 +152,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IssueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionIdentifier forIndexPath:indexPath];
+    cell.issue = self.issueArray[indexPath.item];
     return cell;
 }
 
@@ -162,10 +185,9 @@
 - (UIButton *)sendButton
 {
     if (!_sendButton) {
-        _sendButton = [[UIButton alloc] init];
-        _sendButton.backgroundColor = RandomColor;
+        _sendButton = [[ConstSizeButton alloc] init];
         [_sendButton setFrame:CGRectMake(0, 0, HeadIconSize, HeadIconSize)];
-        _sendButton.layer.borderWidth = 1;
+        [_sendButton setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(sendButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendButton;
@@ -174,11 +196,18 @@
 - (UIButton *)headButton
 {
     if (!_headButton) {
-        _headButton = [[UIButton alloc] init];
-        _headButton.backgroundColor = RandomColor;
+        _headButton = [[ConstSizeButton alloc] init];
         [_headButton setFrame:CGRectMake(0, 0, HeadIconSize, HeadIconSize)];
-        _headButton.layer.cornerRadius = HeadIconSize * 0.5;
-        _headButton.layer.borderWidth = 1;
+        [_headButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+        
+//        [_headButton setImage:[UIImage imageNamed:@"head"] forState:UIControlStateNormal];
+//        [_headButton setBackgroundImage:[[UIImage imageNamed:@"head"] resizableImageWithCapInsets:UIEdgeInsetsMake(100, 100, 100, 100)] forState:UIControlStateNormal];
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_headButton.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:_headButton.bounds.size];
+        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+        maskLayer.frame = _headButton.bounds;
+        maskLayer.path = maskPath.CGPath;
+        _headButton.layer.mask = maskLayer;
+        _headButton.backgroundColor = RandomColor;
         [_headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headButton;
@@ -187,6 +216,7 @@
 - (UICollectionView *)collectionView
 {
     if (!_collectionView) {
+        
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.flowLayout];
         _collectionView.backgroundColor = BackgroundColor;
         _collectionView.dataSource = self;
@@ -200,7 +230,7 @@
 {
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _flowLayout.itemSize = CGSizeMake(self.view.frame.size.width, 500);
+        _flowLayout.itemSize = CGSizeMake(self.view.frame.size.width, 250);
         _flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
     }
     return _flowLayout;

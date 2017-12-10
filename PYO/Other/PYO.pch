@@ -31,6 +31,10 @@
 #import "RequestManager.h"
 
 #import "LoginUserInfo.h"
+#import "YYModel.h"
+
+#import "StringConst.h"
+#import "ConstSizeButton.h"
 #endif
 
 
