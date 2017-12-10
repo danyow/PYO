@@ -9,5 +9,6 @@ target 'PYO' do
   pod 'AFNetworking'
   pod 'SVProgressHUD'
   pod 'Masonry'
-  
+  pod 'YYModel'
+  pod 'AliyunOSSiOS'
 end

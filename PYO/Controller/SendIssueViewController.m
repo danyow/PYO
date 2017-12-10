@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UITextField *contentField;
 
 @end
 
@@ -39,8 +40,21 @@
 
 - (void)sendButtonClick:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
+    if (self.contentField.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:T(@"内容不能为空")];
+        return;
+    }
+    NSDictionary *parm = @{@"topicContent"      : self.contentField.text,
+                           @"topicUrl"          : @"",
+                           @"publisherName"     : [LoginUserInfo getInstance].userLoginStr,
+                           @"publisherPhoto"    : @"",
+                           @"topicType"         : @"1"};
+    [[RequestManager sharedManager] postWithAPI:RequestCircleAdd parameter:parm callback:^(NSDictionary *data, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            NSLog(@"%@", data);
+        }
     }];
 }
 

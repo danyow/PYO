@@ -25,20 +25,20 @@
     return instance_;
 }
 
-- (void)getWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback
+- (void)getWithAPI:(RequestAPI)api parameter:(NSDictionary *)parameter callback:(void (^)(NSDictionary *data, NSError *error))callback
 {
     NSString *apiString = [self getAPIString:api];
-    [self GET:apiString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self GET:apiString parameters:[self appendParameters:parameter] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         callback(responseObject, [self analysisResponse:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         callback(nil, error);
     }];
 }
 
-- (void)postWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback
+- (void)postWithAPI:(RequestAPI)api parameter:(NSDictionary *)parameter callback:(void (^)(NSDictionary *data, NSError *error))callback
 {
     NSString *apiString = [self getAPIString:api];
-    [self POST:apiString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self POST:apiString parameters:[self appendParameters:parameter] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         callback(responseObject, [self analysisResponse:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         callback(nil, error);
@@ -65,6 +65,23 @@
     }
     error = [NSError errorWithDomain:T(@"响应不是字典") code:-200 userInfo:nil];
     return error;
+}
+
+- (NSDictionary *)appendParameters:(NSDictionary *)parameters
+{
+    if ([LoginUserInfo getInstance].logined) {
+        NSMutableDictionary *newParm = [parameters mutableCopy];
+        NSString *token = [LoginUserInfo getInstance].token;
+        long longTime = time(NULL);
+        NSString *t = [NSString stringWithFormat:@"%ld", longTime];
+        NSString *sign = [NSString stringWithFormat:@"%@%@%@", t, token, APPKEY];
+        NSString *signMD5 = [RequestManager MD5:sign];
+        newParm[@"token"] = token;
+        newParm[@"t"] = t;
+        newParm[@"sign"] = signMD5;
+        return [newParm copy];
+    }
+    return parameters;
 }
 
 

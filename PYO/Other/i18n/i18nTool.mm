@@ -26,8 +26,11 @@ USING_NS_I18N;
 
 + (void)addMoName:(NSString *)moName
 {
-    const char *moPath = [[[NSBundle mainBundle] pathForResource:moName ofType:@"mo"] UTF8String];
-    I18nUtils::getInstance()->addMO(moPath, [](int){return 0;}, 1);
+    NSString *moFile = [[NSBundle mainBundle] pathForResource:moName ofType:@"mo"];
+    if (moFile) {
+        const char *moPath = [moFile UTF8String];
+        I18nUtils::getInstance()->addMO(moPath, [](int){return 0;}, 1);
+    }
 }
 
 + (NSString*)getPreferredLanguage

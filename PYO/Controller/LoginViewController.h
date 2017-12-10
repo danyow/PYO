@@ -10,4 +10,6 @@
 
 @interface LoginViewController : UIViewController
 
++ (void)loginWithLoginStr:(NSString *)loginStr password:(NSString *)password callback:(void (^)(NSDictionary *data, NSError *error))callback;
+
 @end

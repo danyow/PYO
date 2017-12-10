@@ -9,8 +9,10 @@
 #import "SendIssueViewController.h"
 #import "IssueCollectionViewCell.h"
 #import "LoginViewController.h"
-#import "LoginUserInfo.h"
 #import "UserInfoViewController.h"
+
+#import "IssueModel.h"
+
 #import <Masonry.h>
 
 #define HeadIconSize 38
@@ -26,6 +28,8 @@
 
 @property (nonatomic, strong) UIView *maskView;
 
+@property (nonatomic, strong) NSMutableArray *issueArray;
+
 @end
 
 @implementation IssueViewController
@@ -33,25 +37,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self baseSetting];
     [self loadMaskView];
-    if (![LoginUserInfo getInstance].logined) {
-        LoginViewController *loginVc = [UIStoryboard storyboardWithName:NSStringFromClass([LoginViewController class]) bundle:nil].instantiateInitialViewController;
-        [self presentViewController:loginVc animated:YES completion:^{
-            [self hideMaskView];
-        }];
+    LoginUserInfo *userInfo = [LoginUserInfo getInstance];
+    if (!userInfo.logined) {
+        [self showLoginViewController];
     } else {
-        [self hideMaskView];
+        [LoginViewController loginWithLoginStr:userInfo.userLoginStr password:userInfo.userPassword callback:^(NSDictionary *data, NSError *error) {
+            if (error) {
+                [self showLoginViewController];
+            } else {
+                [self hideMaskView];
+            }
+        }];
     }
+}
+
+- (void)showLoginViewController
+{
+    LoginViewController *loginVc = [UIStoryboard storyboardWithName:NSStringFromClass([LoginViewController class]) bundle:nil].instantiateInitialViewController;
+    [self presentViewController:loginVc animated:YES completion:^{
+        [self hideMaskView];
+    }];
 }
 
 - (void)loadMaskView
 {
     self.navigationController.navigationBarHidden = YES;
     self.maskView = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.frame];
-    self.maskView.backgroundColor = RandomColor;
+    self.maskView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.maskView];
 }
 
+- (void)baseSetting
+{
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setMinimumDismissTimeInterval:1];
+    NSString *preferredLanguage = [i18nTool getPreferredLanguage];
+    [i18nTool addMoName:preferredLanguage];
+}
 
 - (void)hideMaskView
 {
@@ -66,6 +92,7 @@
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [self getData];
 }
 - (void)initView
 {  
@@ -76,11 +103,28 @@
     self.navigationItem.titleView = self.navTitleLabel;
 }
 
+#pragma mark -  networking
+
+- (void)getData
+{
+    NSDictionary *parm = @{@"page" : @"0",
+                           @"size" : @"10",};
+    [[RequestManager sharedManager] getWithAPI:RequestCircleList parameter:parm callback:^(NSDictionary *data, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            NSLog(@"%@", data[@"data"]);
+            self.issueArray = [IssueModel issueArrayWithDictArray:data[@"data"]] ;
+            [self.collectionView reloadData];
+        }
+    }];
+}
+
 #pragma mark -  UICollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 100;
+    return self.issueArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -162,5 +206,12 @@
     return _flowLayout;
 }
 
+- (NSMutableArray *)issueArray
+{
+    if (!_issueArray) {
+        _issueArray = [[NSMutableArray alloc] init];
+    }
+    return _issueArray;
+}
 
 @end

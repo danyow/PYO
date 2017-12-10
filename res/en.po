@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: I18N Test 1.0\n"
-"POT-Creation-Date: 2017-12-10 11:37+0800\n"
-"PO-Revision-Date: 2017-12-10 11:37+0800\n"
+"POT-Creation-Date: 2017-12-10 13:14+0800\n"
+"PO-Revision-Date: 2017-12-10 13:21+0800\n"
 "Last-Translator: kaishiqi <kaishiqi@iclound.com>\n"
 "Language-Team: Danyow\n"
 "Language: en_US\n"
@@ -16,13 +16,45 @@ msgstr ""
 "X-Poedit-KeywordsList: T\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Controller/LoginViewController.m:90
-msgid "账号不能为空"
-msgstr ""
+#: Controller/LoginViewController.m:63
+msgid "登录"
+msgstr "Log In"
 
-#: Controller/LoginViewController.m:95
+#: Controller/LoginViewController.m:64
+msgid "注册"
+msgstr "Register"
+
+#: Controller/LoginViewController.m:65
+msgid "账户"
+msgstr "Accounts"
+
+#: Controller/LoginViewController.m:66
+msgid "密码"
+msgstr "Password"
+
+#: Controller/LoginViewController.m:77
+msgid "注册中"
+msgstr "Signing up"
+
+#: Controller/LoginViewController.m:106
+msgid "登录中"
+msgstr "Logging"
+
+#: Controller/LoginViewController.m:148
+msgid "账号不能为空"
+msgstr "Account can not be empty"
+
+#: Controller/LoginViewController.m:153
 msgid "密码不能为空"
-msgstr ""
+msgstr "Password can not be empty"
+
+#: Controller/LoginViewController.m:163
+msgid "账号输入不合法"
+msgstr "Invalid account entry"
+
+#: Controller/LoginViewController.m:168
+msgid "密码输入不合法"
+msgstr "Invalid password entry"
 
 #: Controller/SendIssueViewController.m:53
 msgid "取消"
@@ -36,8 +68,13 @@ msgstr "Post"
 msgid "个人中心"
 msgstr "UserInfo"
 
-#~ msgid "登录中"
-#~ msgstr "Login"
+#: Model/RequestManager.m:52
+msgid "响应为空"
+msgstr ""
+
+#: Model/RequestManager.m:66
+msgid "响应不是字典"
+msgstr ""
 
 #~ msgctxt "A post."
 #~ msgid "post"

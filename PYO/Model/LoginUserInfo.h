@@ -15,8 +15,13 @@
 @property (nonatomic, copy  ) NSString *userName;
 @property (nonatomic, copy  ) NSString *userLoginStr;
 @property (nonatomic, copy  ) NSString *userPassword;
+
+@property (nonatomic, copy  ) NSString *token;
+
 @property (nonatomic, assign) BOOL      logined;
 
 + (instancetype)getInstance;
+
+- (void)saveWithUserLoginStr:(NSString *)userLoginStr userPassword:(NSString *)userPassword token:(NSString *)token;
 
 @end

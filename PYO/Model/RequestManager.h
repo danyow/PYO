@@ -25,8 +25,8 @@ typedef enum : NSUInteger {
 
 + (instancetype)sharedManager;
 
-- (void)getWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback;
-- (void)postWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback;
+- (void)getWithAPI:(RequestAPI)api parameter:(NSDictionary *)parameter callback:(void (^)(NSDictionary *data, NSError *error))callback;
+- (void)postWithAPI:(RequestAPI)api parameter:(NSDictionary *)parameter callback:(void (^)(NSDictionary *data, NSError *error))callback;
 + (NSString *)MD5:(NSString *)input;
 
 @end

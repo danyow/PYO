@@ -10,7 +10,7 @@
 #define USER_NAME           @"userName"
 #define USER_LOGINSTR       @"userLoginStr"
 #define USER_PASSWORD       @"userPassword"
-
+#define USER_TOKEN          @"token"
 
 @implementation LoginUserInfo
 
@@ -30,13 +30,29 @@
     if (self) {
         NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO];
         if (userInfo) {
-            self.logined = YES;
+            //80492982-334f-49b2-b012-1df6a89601b2
             [self setValuesForKeysWithDictionary:userInfo];
         } else {
-            self.logined = NO;
         }
     }
     return self;
+}
+
+- (BOOL)logined
+{
+    return self.token != nil;
+}
+
+- (void)saveWithUserLoginStr:(NSString *)userLoginStr userPassword:(NSString *)userPassword token:(NSString *)token
+{
+    self.userLoginStr = userLoginStr;
+    self.userPassword = userPassword;
+    self.token = token;
+    NSDictionary *userDict = @{USER_LOGINSTR : userLoginStr,
+                               USER_PASSWORD : userPassword,
+                               USER_TOKEN    : token};
+    [[NSUserDefaults standardUserDefaults] setObject:userDict forKey:USER_INFO];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

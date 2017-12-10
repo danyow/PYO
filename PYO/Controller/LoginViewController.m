@@ -10,8 +10,6 @@
 #import "IssueViewController.h"
 #import "RegisterViewController.h"
 
-#import "RequestManager.h"
-
 #import "i18nTool.h"
 
 @interface LoginViewController ()
@@ -24,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *loginStrLine;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordLine;
 
+/** 文字显示 */
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+
 @end
 
 @implementation LoginViewController
@@ -32,11 +34,6 @@
 {
     [super viewDidLoad];
     [self initView];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD setMinimumDismissTimeInterval:1];
-    NSString *preferredLanguage = [i18nTool getPreferredLanguage];
-    [i18nTool addMoName:preferredLanguage];
 }
 
 #pragma mark -  private method
@@ -47,6 +44,24 @@
     [self.passwordIcon setBackgroundColor:RandomColor];
     [self.loginStrLine setBackgroundColor:LineColor];
     [self.passwordLine setBackgroundColor:LineColor];
+    
+    LoginUserInfo *userInfo = [LoginUserInfo getInstance];
+    if (userInfo.logined) {
+        self.loginStrField.text = userInfo.userLoginStr;
+        self.passwordField.text = userInfo.userPassword;
+    }
+    
+    self.registerButton.transform = CGAffineTransformMakeRotation(M_PI_4);
+    
+    [self initPreferredLanguage];
+}
+
+- (void)initPreferredLanguage
+{
+    self.titleLabel.text = T(@"登录");
+    [self.registerButton setTitle:T(@"注册") forState:UIControlStateNormal];
+    [self.loginStrField setPlaceholder:T(@"账户")];
+    [self.passwordField setPlaceholder:T(@"密码")];
 }
 
 #pragma mark -  event handle
@@ -67,9 +82,11 @@
                            @"password" : encodePassword,
                            @"appKey"   : APPKEY};
     
-    [[RequestManager sharedManager] postWithAPI:RequestUserRegiest parameter:parm success:^(NSDictionary *data, NSError *error) {
+    [[RequestManager sharedManager] postWithAPI:RequestUserRegiest parameter:parm callback:^(NSDictionary *data, NSError *error) {
         if (!error) {
             [SVProgressHUD showSuccessWithStatus:data[@"msg"]];
+            // 注册成功之后 再走一遍登录逻辑
+            [self loginButtonClick:self.loginButton];
         } else {
             NSLog(@"%@", error);
             [SVProgressHUD showErrorWithStatus:error.domain];
@@ -88,22 +105,32 @@
     NSString *username = self.loginStrField.text;
     NSString *password = self.passwordField.text;
 
-    NSString *appendPassword = [NSString stringWithFormat:@"%@%@%@", username, password, APPKEY];
-    NSString *encodePassword = [RequestManager MD5:appendPassword];
-    NSDictionary *parm = @{@"username" : username,
-                           @"password" : encodePassword,
-                           @"appKey"   : APPKEY};
-    
-    [[RequestManager sharedManager] postWithAPI:RequestUserLogin parameter:parm success:^(NSDictionary *data, NSError *error) {
+    [LoginViewController loginWithLoginStr:username password:password callback:^(NSDictionary *data, NSError *error) {
         if (!error) {
             [SVProgressHUD showSuccessWithStatus:data[@"msg"]];
+            NSLog(@"%@", data);
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
         } else {
             NSLog(@"%@", error);
-            [SVProgressHUD showErrorWithStatus:error.domain];
+            
         }
+    }];
+}
+
++ (void)loginWithLoginStr:(NSString *)loginStr password:(NSString *)password callback:(void (^)(NSDictionary *data, NSError *error))callback
+{
+    NSString *appendPassword = [NSString stringWithFormat:@"%@%@%@", loginStr, password, APPKEY];
+    NSString *encodePassword = [RequestManager MD5:appendPassword];
+    NSDictionary *parm = @{@"username" : loginStr,
+                           @"password" : encodePassword,
+                           @"appKey"   : APPKEY};
+    [[RequestManager sharedManager] postWithAPI:RequestUserLogin parameter:parm callback:^(NSDictionary *data, NSError *error) {
+        if (!error) {
+            [[LoginUserInfo getInstance] saveWithUserLoginStr:loginStr userPassword:password token:data[@"token"]];
+        }
+        callback(data, error);
     }];
 }
 

@@ -24,10 +24,13 @@
 // same for objc, so your C and C++ sources compile with no error:
 #ifdef __OBJC__
 #include <Foundation/Foundation.h>
-#import "ColorConst.h"
 #import <SVProgressHUD.h>
 #import "NSObject+NSLog.h"
+#import "ColorConst.h"
 #import "i18nTool.h"
+#import "RequestManager.h"
+
+#import "LoginUserInfo.h"
 #endif
 
 
