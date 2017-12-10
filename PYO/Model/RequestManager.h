@@ -8,9 +8,25 @@
 
 #import <AFNetworking.h>
 
+#define APPKEY          @"pycircle"
+
+typedef enum : NSUInteger {
+    RequestUserRegiest,
+    RequestUserLogin,
+    RequestUserUpdatePassword,
+    RequestCircleAdd,
+    RequestCircleDel,
+    RequestCircleList,
+    RequestCircleAddComment,
+    RequestCircleDelComment
+} RequestAPI;
+
 @interface RequestManager : AFHTTPSessionManager
 
 + (instancetype)sharedManager;
-- (void)regiestWithUserLoginStr:(NSString *)username userPassword:(NSString *)password;
+
+- (void)getWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback;
+- (void)postWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback;
++ (NSString *)MD5:(NSString *)input;
 
 @end

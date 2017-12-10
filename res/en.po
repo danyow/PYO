@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: I18N Test 1.0\n"
+"POT-Creation-Date: 2017-12-10 11:37+0800\n"
+"PO-Revision-Date: 2017-12-10 11:37+0800\n"
+"Last-Translator: kaishiqi <kaishiqi@iclound.com>\n"
+"Language-Team: Danyow\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: ../PYO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: T\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Controller/LoginViewController.m:90
+msgid "账号不能为空"
+msgstr ""
+
+#: Controller/LoginViewController.m:95
+msgid "密码不能为空"
+msgstr ""
+
+#: Controller/SendIssueViewController.m:53
+msgid "取消"
+msgstr "Cancel"
+
+#: Controller/SendIssueViewController.m:64
+msgid "发表"
+msgstr "Post"
+
+#: Controller/UserInfoViewController.m:19
+msgid "个人中心"
+msgstr "UserInfo"
+
+#~ msgid "登录中"
+#~ msgstr "Login"
+
+#~ msgctxt "A post."
+#~ msgid "post"
+#~ msgstr "Post"
+
+#~ msgctxt "To post."
+#~ msgid "post"
+#~ msgstr "Post"
+
+#~ msgid "There is a comment."
+#~ msgid_plural "There are comments."
+#~ msgstr[0] "Es ist ein Kommentar."
+#~ msgstr[1] "Es gibt Kommentare."
+
+#~ msgctxt "male"
+#~ msgid "This apple belongs to them."
+#~ msgid_plural "These apples belong to them."
+#~ msgstr[0] "Dieser Apfel gehört zu ihnen."
+#~ msgstr[1] "Diese Äpfel gehören zu ihnen."
+
+#~ msgctxt "female"
+#~ msgid "This apple belongs to them."
+#~ msgid_plural "These apples belong to them."
+#~ msgstr[0] "Dieser Apfel gehört zu ihnen."
+#~ msgstr[1] "Diese Äpfel gehören zu ihnen."
+
+#~ msgctxt "animal"
+#~ msgid "This apple belongs to them."
+#~ msgid_plural "These apples belong to them."
+#~ msgstr[0] "Dieser Apfel gehört zu ihnen."
+#~ msgstr[1] "Diese Äpfel gehören zu ihnen."
+
+#~ msgid "hero"
+#~ msgid_plural "heroes"
+#~ msgstr[0] "Held"
+#~ msgstr[1] "Helden"
+
+#~ msgid "book"
+#~ msgid_plural "books"
+#~ msgstr[0] "Buch"
+#~ msgstr[1] "Bücher"
+
+#~ msgid "child"
+#~ msgid_plural "children"
+#~ msgstr[0] "Kind"
+#~ msgstr[1] "Kinder"
+
+#~ msgid "knife"
+#~ msgid_plural "knives"
+#~ msgstr[0] "Messer"
+#~ msgstr[1] "Messer"
+
+#~ msgid "mouse"
+#~ msgid_plural "mice"
+#~ msgstr[0] "Maus"
+#~ msgstr[1] "Mäuse"
+
+#~ msgctxt "male"
+#~ msgid "he"
+#~ msgid_plural "they"
+#~ msgstr[0] "er"
+#~ msgstr[1] "sie"
+
+#~ msgctxt "female"
+#~ msgid "she"
+#~ msgid_plural "they"
+#~ msgstr[0] "sie"
+#~ msgstr[1] "sie"
+
+#~ msgctxt "object"
+#~ msgid "it"
+#~ msgid_plural "they"
+#~ msgstr[0] "es"
+#~ msgstr[1] "sie"
+
+#~ msgid "\ti=%d1 is %8s2: "
+#~ msgstr "\ti=%d1 ist %8s2: "
+
+#~ msgid "singular"
+#~ msgstr "Singular"
+
+#~ msgid "plural"
+#~ msgstr "Plural"
+
+#~ msgid "\ti=%d is %8s: "
+#~ msgstr "\ti=%d ist %8s: "
+
+#~ msgid "You have chosen the %s1 hat."
+#~ msgstr "Sie haben den Hut %s1 gewählt."
+
+#~ msgid "red"
+#~ msgstr "rot"
+
+#~ msgid "blue"
+#~ msgstr "blau"
+
+#~ msgid "yellow"
+#~ msgstr "gelb"
+
+#~ msgid "Hi %s1! Welcome to %s1's city."
+#~ msgstr "Hallo %s1! Willkommen bei %s1 die Stadt."
+
+#~ msgid "There are birds %s1 in the %s2."
+#~ msgstr "Es gibt Vögel %s1 in der %s2."
+
+#~ msgid "singing"
+#~ msgstr "Gesang"
+
+#~ msgid "tree"
+#~ msgstr "Baum"

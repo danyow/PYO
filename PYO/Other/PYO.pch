@@ -9,10 +9,25 @@
 //#ifndef PYO_pch
 //#define PYO_pch
 //
-//// Include any system framework and library headers here that should be included in all compilation units.
-//// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 //
 //
 //#endif /* PYO_pch */
 
+// MONPrefix.pch
+
+#ifdef __cplusplus
+#include <string>
+#endif
+
+// same for objc, so your C and C++ sources compile with no error:
+#ifdef __OBJC__
+#include <Foundation/Foundation.h>
 #import "ColorConst.h"
+#import <SVProgressHUD.h>
+#import "NSObject+NSLog.h"
+#import "i18nTool.h"
+#endif
+
+

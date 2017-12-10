@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		B3565E9C616F88310861DC9E /* libPods-PYO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 280065F4408B763EE2A9E9E9 /* libPods-PYO.a */; };
 		F40D197E1FDB6A8B0092130B /* IssueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F40D197D1FDB6A8B0092130B /* IssueModel.m */; };
+		F43D3A351FDC1C100031D21E /* NSObject+NSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */; };
+		F43D3AB01FDC37D60031D21E /* MO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A961FDC37D60031D21E /* MO.cpp */; };
+		F43D3AB11FDC37D60031D21E /* I18nUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A971FDC37D60031D21E /* I18nUtils.cpp */; };
+		F43D3AB21FDC37D60031D21E /* Entry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A981FDC37D60031D21E /* Entry.cpp */; };
+		F43D3AB31FDC37D60031D21E /* i18nTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A9C1FDC37D60031D21E /* i18nTool.mm */; };
+		F43D3AD71FDC382D0031D21E /* en.po in Resources */ = {isa = PBXBuildFile; fileRef = F43D3AC91FDC382D0031D21E /* en.po */; };
+		F43D3ADD1FDC382D0031D21E /* en.mo in Resources */ = {isa = PBXBuildFile; fileRef = F43D3ACF1FDC382D0031D21E /* en.mo */; };
 		F45E4F141FD58FE7002E5EEB /* ColorConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F45E4F131FD58FE7002E5EEB /* ColorConst.m */; };
 		F48090351FD976CD0058C45D /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F48090341FD976CD0058C45D /* LoginUserInfo.m */; };
 		F48090381FD98A960058C45D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48090371FD98A960058C45D /* RegisterViewController.m */; };
@@ -37,6 +44,19 @@
 		91C5F849017F2CC3A68E96F7 /* Pods-PYO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PYO.release.xcconfig"; path = "Pods/Target Support Files/Pods-PYO/Pods-PYO.release.xcconfig"; sourceTree = "<group>"; };
 		F40D197C1FDB6A8B0092130B /* IssueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueModel.h; sourceTree = "<group>"; };
 		F40D197D1FDB6A8B0092130B /* IssueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueModel.m; sourceTree = "<group>"; };
+		F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSLog.m"; sourceTree = "<group>"; };
+		F43D3A341FDC1C100031D21E /* NSObject+NSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSLog.h"; sourceTree = "<group>"; };
+		F43D3A961FDC37D60031D21E /* MO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MO.cpp; sourceTree = "<group>"; };
+		F43D3A971FDC37D60031D21E /* I18nUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = I18nUtils.cpp; sourceTree = "<group>"; };
+		F43D3A981FDC37D60031D21E /* Entry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entry.cpp; sourceTree = "<group>"; };
+		F43D3A991FDC37D60031D21E /* i18nTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i18nTool.h; sourceTree = "<group>"; };
+		F43D3A9A1FDC37D60031D21E /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		F43D3A9B1FDC37D60031D21E /* I18nDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = I18nDefine.h; sourceTree = "<group>"; };
+		F43D3A9C1FDC37D60031D21E /* i18nTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = i18nTool.mm; sourceTree = "<group>"; };
+		F43D3A9E1FDC37D60031D21E /* MO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MO.h; sourceTree = "<group>"; };
+		F43D3A9F1FDC37D60031D21E /* I18nUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = I18nUtils.h; sourceTree = "<group>"; };
+		F43D3AC91FDC382D0031D21E /* en.po */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en.po; sourceTree = "<group>"; };
+		F43D3ACF1FDC382D0031D21E /* en.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = en.mo; sourceTree = "<group>"; };
 		F45E4F121FD58FE7002E5EEB /* ColorConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConst.h; sourceTree = "<group>"; };
 		F45E4F131FD58FE7002E5EEB /* ColorConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorConst.m; sourceTree = "<group>"; };
 		F48090331FD976CD0058C45D /* LoginUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginUserInfo.h; sourceTree = "<group>"; };
@@ -102,6 +122,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F43D3A951FDC37D60031D21E /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				F43D3A9E1FDC37D60031D21E /* MO.h */,
+				F43D3A961FDC37D60031D21E /* MO.cpp */,
+				F43D3A9F1FDC37D60031D21E /* I18nUtils.h */,
+				F43D3A971FDC37D60031D21E /* I18nUtils.cpp */,
+				F43D3A9A1FDC37D60031D21E /* Entry.h */,
+				F43D3A981FDC37D60031D21E /* Entry.cpp */,
+				F43D3A9B1FDC37D60031D21E /* I18nDefine.h */,
+				F43D3A991FDC37D60031D21E /* i18nTool.h */,
+				F43D3A9C1FDC37D60031D21E /* i18nTool.mm */,
+			);
+			path = i18n;
+			sourceTree = "<group>";
+		};
+		F43D3AC31FDC382D0031D21E /* res */ = {
+			isa = PBXGroup;
+			children = (
+				F43D3AC91FDC382D0031D21E /* en.po */,
+				F43D3ACF1FDC382D0031D21E /* en.mo */,
+			);
+			path = res;
+			sourceTree = SOURCE_ROOT;
+		};
 		F4D153C11FD580B200A6360C = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +168,7 @@
 		F4D153CC1FD580B200A6360C /* PYO */ = {
 			isa = PBXGroup;
 			children = (
+				F43D3AC31FDC382D0031D21E /* res */,
 				F4D2FE6D1FD81FAE00D83091 /* Controller */,
 				F4D2FE701FD81FAE00D83091 /* Model */,
 				F4D2FE6E1FD81FAE00D83091 /* Other */,
@@ -158,10 +204,13 @@
 		F4D2FE6E1FD81FAE00D83091 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				F43D3A951FDC37D60031D21E /* i18n */,
 				F4D153D61FD580B200A6360C /* Assets.xcassets */,
 				F4D153D81FD580B200A6360C /* LaunchScreen.storyboard */,
 				F4D153DB1FD580B200A6360C /* Info.plist */,
 				F4D153DC1FD580B200A6360C /* main.m */,
+				F43D3A341FDC1C100031D21E /* NSObject+NSLog.h */,
+				F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */,
 				F4D153CD1FD580B200A6360C /* AppDelegate.h */,
 				F4D153CE1FD580B200A6360C /* AppDelegate.m */,
 				F45E4F121FD58FE7002E5EEB /* ColorConst.h */,
@@ -258,6 +307,8 @@
 				F4D153DA1FD580B200A6360C /* LaunchScreen.storyboard in Resources */,
 				F4D153D71FD580B200A6360C /* Assets.xcassets in Resources */,
 				F4D153D51FD580B200A6360C /* IssueViewController.storyboard in Resources */,
+				F43D3AD71FDC382D0031D21E /* en.po in Resources */,
+				F43D3ADD1FDC382D0031D21E /* en.mo in Resources */,
 				F480903A1FD98AA20058C45D /* RegisterViewController.storyboard in Resources */,
 				F4D2FE7D1FD82F0600D83091 /* LoginViewController.storyboard in Resources */,
 				F4D2FE6C1FD8116B00D83091 /* SendIssueViewController.storyboard in Resources */,
@@ -327,10 +378,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F43D3A351FDC1C100031D21E /* NSObject+NSLog.m in Sources */,
 				F4D2FE7B1FD82D0500D83091 /* LoginViewController.m in Sources */,
 				F4D2FE681FD810DB00D83091 /* SendIssueViewController.m in Sources */,
 				F4D153D21FD580B200A6360C /* IssueViewController.m in Sources */,
 				F4DC4DB81FDAE6410006D7ED /* RequestManager.m in Sources */,
+				F43D3AB01FDC37D60031D21E /* MO.cpp in Sources */,
+				F43D3AB21FDC37D60031D21E /* Entry.cpp in Sources */,
 				F48090351FD976CD0058C45D /* LoginUserInfo.m in Sources */,
 				F4D2FE741FD8200900D83091 /* IssueCollectionViewCell.m in Sources */,
 				F48090381FD98A960058C45D /* RegisterViewController.m in Sources */,
@@ -339,7 +393,9 @@
 				F4D153DD1FD580B200A6360C /* main.m in Sources */,
 				F45E4F141FD58FE7002E5EEB /* ColorConst.m in Sources */,
 				F4D153CF1FD580B200A6360C /* AppDelegate.m in Sources */,
+				F43D3AB31FDC37D60031D21E /* i18nTool.mm in Sources */,
 				F4D2FE781FD8298F00D83091 /* NavigationController.m in Sources */,
+				F43D3AB11FDC37D60031D21E /* I18nUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,8 +457,10 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PYO/Other/PYO.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -413,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -455,14 +513,16 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PYO/Other/PYO.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -479,6 +539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PYO/Other/PYO.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/PYO/Other/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Danyow.PYO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +557,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PYO/Other/PYO.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/PYO/Other/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Danyow.PYO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

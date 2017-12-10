@@ -9,9 +9,8 @@
 #import "RequestManager.h"
 #import <CommonCrypto/CommonDigest.h>
 
-
 #define BASE_URL_STRING @"http://1740k0d313.51mypc.cn/pycircle/"
-#define APPKEY          @"pycircle"
+
 @implementation RequestManager
 
 + (instancetype)sharedManager
@@ -22,33 +21,86 @@
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         instance_ = [[self alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL_STRING] sessionConfiguration:config];
-        NSSet *responseSerializer = instance_.responseSerializer.acceptableContentTypes;
-        instance_.responseSerializer.acceptableContentTypes = [responseSerializer setByAddingObject:@"text/html"];
-        instance_.requestSerializer = [AFJSONRequestSerializer serializer];
-        [instance_.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [instance_.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     });
     return instance_;
 }
 
-- (void)regiestWithUserLoginStr:(NSString *)username userPassword:(NSString *)password
+- (void)getWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback
 {
-    NSString *appendPassword = [NSString stringWithFormat:@"%@%@%@", username, password, APPKEY];
-    NSString *encodePassword = [self MD5:appendPassword];
-    NSDictionary *parm = @{@"username" : username,
-                           @"password" : encodePassword,
-                           @"appKey"   : APPKEY};
-//    NSString *parm = [NSString stringWithFormat:@"username=%@&password=%@&appKey=%@", username, password, APPKEY];
-    [self POST:@"api/user/register" parameters:parm progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject);
+    NSString *apiString = [self getAPIString:api];
+    [self GET:apiString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        callback(responseObject, [self analysisResponse:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+        callback(nil, error);
     }];
 }
 
-- (NSString *)MD5:(NSString *)input
+- (void)postWithAPI:(RequestAPI)api parameter:(id)parameter success:(void (^)(NSDictionary *data, NSError *error))callback
+{
+    NSString *apiString = [self getAPIString:api];
+    [self POST:apiString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        callback(responseObject, [self analysisResponse:responseObject]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        callback(nil, error);
+    }];
+}
+
+- (NSError *)analysisResponse:(id)responseObject
+{
+    NSError *error;
+    if (!responseObject) {
+        error = [NSError errorWithDomain:T(@"响应为空") code:-200 userInfo:nil];
+        return error;
+    }
+    if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *responseDict = responseObject;
+        NSInteger code = [responseDict[@"code"] integerValue];
+        NSString *msg = responseDict[@"msg"];
+        if (code != 200) {
+            error = [NSError errorWithDomain:msg code:-200 userInfo:nil];
+            return error;
+        } else {
+            return nil;
+        }
+    }
+    error = [NSError errorWithDomain:T(@"响应不是字典") code:-200 userInfo:nil];
+    return error;
+}
+
+
+- (NSString *)getAPIString:(RequestAPI)api
+{
+    switch (api) {
+        case RequestUserRegiest:
+            return @"api/user/register";
+            break;
+        case RequestUserLogin:
+            return @"api/user/login";
+            break;
+        case RequestUserUpdatePassword:
+            return @"api/user/updatePassword";
+            break;
+        case RequestCircleAdd:
+            return @"api/circle/add";
+            break;
+        case RequestCircleDel:
+            return @"api/circle/del";
+            break;
+        case RequestCircleList:
+            return @"api/circle/list";
+            break;
+        case RequestCircleAddComment:
+            return @"api/circle/addComment";
+            break;
+        case RequestCircleDelComment:
+            return @"api/circle/delComment";
+            break;
+        default:
+            break;
+    }
+}
+
++ (NSString *)MD5:(NSString *)input
 {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];

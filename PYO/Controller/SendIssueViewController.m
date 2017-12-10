@@ -50,7 +50,7 @@
 {
     if (!_cancelButton) {
         _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+        [_cancelButton setTitle:T(@"取消") forState:UIControlStateNormal];
         [_cancelButton setTitleColor:TextColor forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(cancelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -61,7 +61,7 @@
 {
     if (!_sendButton) {
         _sendButton = [[UIButton alloc] init];
-        [_sendButton setTitle:@"发表" forState:UIControlStateNormal];
+        [_sendButton setTitle:T(@"发表") forState:UIControlStateNormal];
         [_sendButton setTitleColor:TextColor forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(sendButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
