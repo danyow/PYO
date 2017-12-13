@@ -20,7 +20,8 @@
     UINavigationBar *bar = self.navigationBar;
     [bar setBackgroundImage:[ColorConst imageFromColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsCompact];
     [bar setShadowImage:[ColorConst imageFromColor:[UIColor whiteColor]]];
+    self.navigationBar.translucent = NO;
+    self.navigationBar.tintColor = [UIColor blackColor];
 }
-
 
 @end

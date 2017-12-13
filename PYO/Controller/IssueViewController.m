@@ -41,7 +41,7 @@
     [self baseSetting];
     [self loadMaskView];
     LoginUserInfo *userInfo = [LoginUserInfo getInstance];
-    if (!userInfo.logined) {
+    if (userInfo.logined) {
         [self showLoginViewController];
     } else {
         // 取消注册
@@ -102,10 +102,7 @@
 
 - (void)initView
 {
-//    UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, HeadIconSize, HeadIconSize)];
-//    temp.image = [UIImage imageNamed:@"head"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.headButton];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"head"] style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:self.sendButton];
     
     self.navigationItem.rightBarButtonItem.width = HeadIconSize;
@@ -146,19 +143,45 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.issueArray.count;
+    return self.issueArray.count + 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IssueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionIdentifier forIndexPath:indexPath];
-    cell.issue = self.issueArray[indexPath.item];
+//    cell.issue = self.issueArray[indexPath.item];
     return cell;
 }
 
 #pragma mark -  event handle
 
 - (void)sendButtonClick:(UIButton *)sender
+{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *tackPhotoAction = [UIAlertAction actionWithTitle:T(@"拍摄")
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * action) {
+                                                                [self showIssueSendViewController];
+                                                            }];
+    UIAlertAction *albumAction = [UIAlertAction actionWithTitle:T(@"相册")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [self showIssueSendViewController];
+                                                        }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:T(@"取消") style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:tackPhotoAction];
+    [alert addAction:albumAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showIssueSendViewController
 {
     SendIssueViewController *vc = [UIStoryboard storyboardWithName:NSStringFromClass([SendIssueViewController class]) bundle:nil].instantiateInitialViewController;
     [self presentViewController:vc animated:YES completion:nil];
@@ -185,7 +208,7 @@
 - (UIButton *)sendButton
 {
     if (!_sendButton) {
-        _sendButton = [[ConstSizeButton alloc] init];
+        _sendButton = [[UIButton alloc] init];
         [_sendButton setFrame:CGRectMake(0, 0, HeadIconSize, HeadIconSize)];
         [_sendButton setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(sendButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -196,17 +219,11 @@
 - (UIButton *)headButton
 {
     if (!_headButton) {
-        _headButton = [[ConstSizeButton alloc] init];
+        _headButton = [[UIButton alloc] init];
         [_headButton setFrame:CGRectMake(0, 0, HeadIconSize, HeadIconSize)];
         [_headButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
-        
-//        [_headButton setImage:[UIImage imageNamed:@"head"] forState:UIControlStateNormal];
-//        [_headButton setBackgroundImage:[[UIImage imageNamed:@"head"] resizableImageWithCapInsets:UIEdgeInsetsMake(100, 100, 100, 100)] forState:UIControlStateNormal];
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_headButton.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:_headButton.bounds.size];
-        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-        maskLayer.frame = _headButton.bounds;
-        maskLayer.path = maskPath.CGPath;
-        _headButton.layer.mask = maskLayer;
+        [_headButton setBackgroundImage:[Tool image:[UIImage imageNamed:@"head"] scaleToSize:CGSizeMake(HeadIconSize, HeadIconSize)] forState:UIControlStateNormal];
+        [Tool view_cutRoundedRect:_headButton];
         _headButton.backgroundColor = RandomColor;
         [_headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -230,7 +247,7 @@
 {
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _flowLayout.itemSize = CGSizeMake(self.view.frame.size.width, 250);
+        _flowLayout.itemSize = CGSizeMake(self.view.frame.size.width, 330);
         _flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
     }
     return _flowLayout;

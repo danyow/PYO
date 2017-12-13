@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B3565E9C616F88310861DC9E /* libPods-PYO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 280065F4408B763EE2A9E9E9 /* libPods-PYO.a */; };
 		F40D197E1FDB6A8B0092130B /* IssueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F40D197D1FDB6A8B0092130B /* IssueModel.m */; };
-		F43BD7A11FDD852300602451 /* ConstSizeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BD7A01FDD852300602451 /* ConstSizeButton.m */; };
 		F43D3A351FDC1C100031D21E /* NSObject+NSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */; };
 		F43D3AB01FDC37D60031D21E /* MO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A961FDC37D60031D21E /* MO.cpp */; };
 		F43D3AB11FDC37D60031D21E /* I18nUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D3A971FDC37D60031D21E /* I18nUtils.cpp */; };
@@ -37,6 +36,9 @@
 		F4D2FE7B1FD82D0500D83091 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2FE7A1FD82D0500D83091 /* LoginViewController.m */; };
 		F4D2FE7D1FD82F0600D83091 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D2FE7C1FD82F0600D83091 /* LoginViewController.storyboard */; };
 		F4DC4DB81FDAE6410006D7ED /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DC4DB71FDAE6410006D7ED /* RequestManager.m */; };
+		F4DFC3DE1FE017F800C5FDB7 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DFC3DD1FE017F800C5FDB7 /* Tool.m */; };
+		F4DFC3E21FE1615A00C5FDB7 /* IssueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DFC3E01FE1615A00C5FDB7 /* IssueTableViewCell.m */; };
+		F4DFC3E31FE1615A00C5FDB7 /* IssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DFC3E11FE1615A00C5FDB7 /* IssueTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +48,6 @@
 		F40D197C1FDB6A8B0092130B /* IssueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueModel.h; sourceTree = "<group>"; };
 		F40D197D1FDB6A8B0092130B /* IssueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueModel.m; sourceTree = "<group>"; };
 		F43BD79E1FDD73DD00602451 /* StringConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringConst.h; sourceTree = "<group>"; };
-		F43BD79F1FDD852300602451 /* ConstSizeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstSizeButton.h; sourceTree = "<group>"; };
-		F43BD7A01FDD852300602451 /* ConstSizeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConstSizeButton.m; sourceTree = "<group>"; };
 		F43D3A331FDC1C100031D21E /* NSObject+NSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSLog.m"; sourceTree = "<group>"; };
 		F43D3A341FDC1C100031D21E /* NSObject+NSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSLog.h"; sourceTree = "<group>"; };
 		F43D3A961FDC37D60031D21E /* MO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MO.cpp; sourceTree = "<group>"; };
@@ -91,10 +91,15 @@
 		F4D2FE771FD8298F00D83091 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		F4D2FE791FD82D0500D83091 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F4D2FE7A1FD82D0500D83091 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		F4D2FE7C1FD82F0600D83091 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		F4D2FE7C1FD82F0600D83091 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LoginViewController.storyboard; path = /Users/imagons/Desktop/GitHub/PYO/PYO/Controller/LoginViewController.storyboard; sourceTree = "<absolute>"; };
 		F4DC4DB61FDAE6410006D7ED /* RequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		F4DC4DB71FDAE6410006D7ED /* RequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		F4DC4DB91FDAE8DD0006D7ED /* PYO.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYO.pch; sourceTree = "<group>"; };
+		F4DFC3DC1FE017F800C5FDB7 /* Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		F4DFC3DD1FE017F800C5FDB7 /* Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+		F4DFC3DF1FE1615A00C5FDB7 /* IssueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueTableViewCell.h; sourceTree = "<group>"; };
+		F4DFC3E01FE1615A00C5FDB7 /* IssueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewCell.m; sourceTree = "<group>"; };
+		F4DFC3E11FE1615A00C5FDB7 /* IssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +224,10 @@
 				F4D153CE1FD580B200A6360C /* AppDelegate.m */,
 				F45E4F121FD58FE7002E5EEB /* ColorConst.h */,
 				F45E4F131FD58FE7002E5EEB /* ColorConst.m */,
-				F4DC4DB91FDAE8DD0006D7ED /* PYO.pch */,
 				F43BD79E1FDD73DD00602451 /* StringConst.h */,
+				F4DFC3DC1FE017F800C5FDB7 /* Tool.h */,
+				F4DFC3DD1FE017F800C5FDB7 /* Tool.m */,
+				F4DC4DB91FDAE8DD0006D7ED /* PYO.pch */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -231,8 +238,9 @@
 				F4D2FE711FD8200900D83091 /* IssueCollectionViewCell.h */,
 				F4D2FE721FD8200900D83091 /* IssueCollectionViewCell.m */,
 				F4D2FE731FD8200900D83091 /* IssueCollectionViewCell.xib */,
-				F43BD79F1FDD852300602451 /* ConstSizeButton.h */,
-				F43BD7A01FDD852300602451 /* ConstSizeButton.m */,
+				F4DFC3DF1FE1615A00C5FDB7 /* IssueTableViewCell.h */,
+				F4DFC3E01FE1615A00C5FDB7 /* IssueTableViewCell.m */,
+				F4DFC3E11FE1615A00C5FDB7 /* IssueTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 				F4D153DA1FD580B200A6360C /* LaunchScreen.storyboard in Resources */,
 				F4D153D71FD580B200A6360C /* Assets.xcassets in Resources */,
 				F4D153D51FD580B200A6360C /* IssueViewController.storyboard in Resources */,
+				F4DFC3E31FE1615A00C5FDB7 /* IssueTableViewCell.xib in Resources */,
 				F43D3AD71FDC382D0031D21E /* en.po in Resources */,
 				F43D3ADD1FDC382D0031D21E /* en.mo in Resources */,
 				F480903A1FD98AA20058C45D /* RegisterViewController.storyboard in Resources */,
@@ -386,13 +395,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43D3A351FDC1C100031D21E /* NSObject+NSLog.m in Sources */,
-				F43BD7A11FDD852300602451 /* ConstSizeButton.m in Sources */,
 				F4D2FE7B1FD82D0500D83091 /* LoginViewController.m in Sources */,
 				F4D2FE681FD810DB00D83091 /* SendIssueViewController.m in Sources */,
+				F4DFC3E21FE1615A00C5FDB7 /* IssueTableViewCell.m in Sources */,
 				F4D153D21FD580B200A6360C /* IssueViewController.m in Sources */,
 				F4DC4DB81FDAE6410006D7ED /* RequestManager.m in Sources */,
 				F43D3AB01FDC37D60031D21E /* MO.cpp in Sources */,
 				F43D3AB21FDC37D60031D21E /* Entry.cpp in Sources */,
+				F4DFC3DE1FE017F800C5FDB7 /* Tool.m in Sources */,
 				F48090351FD976CD0058C45D /* LoginUserInfo.m in Sources */,
 				F4D2FE741FD8200900D83091 /* IssueCollectionViewCell.m in Sources */,
 				F48090381FD98A960058C45D /* RegisterViewController.m in Sources */,

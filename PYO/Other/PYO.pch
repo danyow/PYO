@@ -34,7 +34,8 @@
 #import "YYModel.h"
 
 #import "StringConst.h"
-#import "ConstSizeButton.h"
+
+#import "Tool.h"
 #endif
 
 

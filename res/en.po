@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: I18N Test 1.0\n"
-"POT-Creation-Date: 2017-12-10 13:14+0800\n"
-"PO-Revision-Date: 2017-12-10 13:21+0800\n"
+"POT-Creation-Date: 2017-12-12 22:17+0800\n"
+"PO-Revision-Date: 2017-12-12 22:18+0800\n"
 "Last-Translator: kaishiqi <kaishiqi@iclound.com>\n"
 "Language-Team: Danyow\n"
 "Language: en_US\n"
@@ -16,55 +16,67 @@ msgstr ""
 "X-Poedit-KeywordsList: T\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Controller/LoginViewController.m:63
-msgid "登录"
-msgstr "Log In"
+#: Controller/IssueViewController.m:165
+msgid "拍摄"
+msgstr "Take A Photo"
 
-#: Controller/LoginViewController.m:64
-msgid "注册"
-msgstr "Register"
+#: Controller/IssueViewController.m:170
+msgid "相册"
+msgstr "Chose Album"
 
-#: Controller/LoginViewController.m:65
-msgid "账户"
-msgstr "Accounts"
-
-#: Controller/LoginViewController.m:66
-msgid "密码"
-msgstr "Password"
-
-#: Controller/LoginViewController.m:77
-msgid "注册中"
-msgstr "Signing up"
-
-#: Controller/LoginViewController.m:106
-msgid "登录中"
-msgstr "Logging"
-
-#: Controller/LoginViewController.m:148
-msgid "账号不能为空"
-msgstr "Account can not be empty"
-
-#: Controller/LoginViewController.m:153
-msgid "密码不能为空"
-msgstr "Password can not be empty"
-
-#: Controller/LoginViewController.m:163
-msgid "账号输入不合法"
-msgstr "Invalid account entry"
-
-#: Controller/LoginViewController.m:168
-msgid "密码输入不合法"
-msgstr "Invalid password entry"
-
-#: Controller/SendIssueViewController.m:53
+#: Controller/IssueViewController.m:176 Controller/SendIssueViewController.m:70
 msgid "取消"
 msgstr "Cancel"
 
-#: Controller/SendIssueViewController.m:64
+#: Controller/LoginViewController.m:61
+msgid "登录"
+msgstr "Log In"
+
+#: Controller/LoginViewController.m:62
+msgid "注册"
+msgstr "Register"
+
+#: Controller/LoginViewController.m:63
+msgid "账户"
+msgstr "Accounts"
+
+#: Controller/LoginViewController.m:64
+msgid "密码"
+msgstr "Password"
+
+#: Controller/LoginViewController.m:75
+msgid "注册中"
+msgstr "Signing up"
+
+#: Controller/LoginViewController.m:104
+msgid "登录中"
+msgstr "Logging"
+
+#: Controller/LoginViewController.m:144
+msgid "账号不能为空"
+msgstr "Account can not be empty"
+
+#: Controller/LoginViewController.m:149
+msgid "密码不能为空"
+msgstr "Password can not be empty"
+
+#: Controller/LoginViewController.m:159
+msgid "账号输入不合法"
+msgstr "Invalid account entry"
+
+#: Controller/LoginViewController.m:164
+msgid "密码输入不合法"
+msgstr "Invalid password entry"
+
+#: Controller/SendIssueViewController.m:44
+msgid "内容不能为空"
+msgstr "Content can not be empty"
+
+#: Controller/SendIssueViewController.m:81
 msgid "发表"
 msgstr "Post"
 
-#: Controller/UserInfoViewController.m:19
+#: Controller/UserInfoViewController.m:29
 msgid "个人中心"
 msgstr "UserInfo"
 

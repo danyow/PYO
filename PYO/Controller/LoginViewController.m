@@ -51,7 +51,7 @@
         self.passwordField.text = userInfo.userPassword;
     }
     
-    self.registerButton.transform = CGAffineTransformMakeRotation(M_PI_4);
+//  self.registerButton.transform = CGAffineTransformMakeRotation(M_PI_4);
     
     [self initPreferredLanguage];
 }
@@ -101,10 +101,12 @@
         return;
     }
     
-    [SVProgressHUD showWithStatus:T(@"登录中")];
+//    [SVProgressHUD showWithStatus:T(@"登录中")];
     NSString *username = self.loginStrField.text;
     NSString *password = self.passwordField.text;
-
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     [LoginViewController loginWithLoginStr:username password:password callback:^(NSDictionary *data, NSError *error) {
         if (!error) {
             [SVProgressHUD showSuccessWithStatus:data[@"msg"]];
