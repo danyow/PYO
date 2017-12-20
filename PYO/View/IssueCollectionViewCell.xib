@@ -63,6 +63,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xu-11-5R6">
                                 <rect key="frame" x="20.5" y="279" width="27" height="24"/>
                                 <state key="normal" image="note"/>
+                                <connections>
+                                    <action selector="commentButtonClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="rfm-KS-hdV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehq-cI-Vf5">
                                 <rect key="frame" x="20.5" y="228" width="27" height="23"/>
@@ -100,13 +103,14 @@
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="439" height="427"/>
             <connections>
+                <outlet property="commentButton" destination="2Xu-11-5R6" id="gUw-KI-hTf"/>
                 <outlet property="contentLabel" destination="BoV-aJ-9k5" id="sLh-Ke-q4a"/>
                 <outlet property="headButton" destination="h84-Uc-Yjw" id="isU-H0-ahN"/>
                 <outlet property="nameButton" destination="LdD-ZD-o90" id="EiX-4j-FCi"/>
                 <outlet property="shadowView" destination="1p4-Dr-Eqs" id="Gtx-my-k5F"/>
                 <outlet property="timeLabel" destination="fDr-b2-vwb" id="K87-IH-ZL0"/>
             </connections>
-            <point key="canvasLocation" x="-496" y="188"/>
+            <point key="canvasLocation" x="-798" y="158"/>
         </collectionViewCell>
     </objects>
     <resources>

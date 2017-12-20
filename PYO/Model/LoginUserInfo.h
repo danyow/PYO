@@ -17,11 +17,12 @@
 @property (nonatomic, copy  ) NSString *userPassword;
 
 @property (nonatomic, copy  ) NSString *token;
+@property (nonatomic, copy  ) NSString *userId;
 
 @property (nonatomic, assign) BOOL      logined;
 
 + (instancetype)getInstance;
 
-- (void)saveWithUserLoginStr:(NSString *)userLoginStr userPassword:(NSString *)userPassword token:(NSString *)token;
+- (void)saveWithUserLoginStr:(NSString *)userLoginStr userPassword:(NSString *)userPassword data:(NSDictionary *)data;
 
 @end

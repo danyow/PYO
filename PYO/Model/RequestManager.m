@@ -21,6 +21,12 @@
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         instance_ = [[self alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL_STRING] sessionConfiguration:config];
+//        NSSet *responseSerializer = instance_.responseSerializer.acceptableContentTypes;
+//        instance_.responseSerializer.acceptableContentTypes = [responseSerializer setByAddingObject:@"text/html"];
+        
+//        instance_.requestSerializer = [AFJSONRequestSerializer serializer];
+//        [instance_.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//        [instance_.requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     });
     return instance_;
 }
@@ -28,7 +34,8 @@
 - (void)getWithAPI:(RequestAPI)api parameter:(NSDictionary *)parameter callback:(void (^)(NSDictionary *data, NSError *error))callback
 {
     NSString *apiString = [self getAPIString:api];
-    [self GET:apiString parameters:[self appendParameters:parameter] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *newParameter = [self appendParameters:parameter];
+    [self GET:apiString parameters:newParameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         callback(responseObject, [self analysisResponse:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         callback(nil, error);
@@ -38,7 +45,8 @@
 - (void)postWithAPI:(RequestAPI)api parameter:(NSDictionary *)parameter callback:(void (^)(NSDictionary *data, NSError *error))callback
 {
     NSString *apiString = [self getAPIString:api];
-    [self POST:apiString parameters:[self appendParameters:parameter] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *newParameter = [self appendParameters:parameter];
+    [self POST:apiString parameters:newParameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         callback(responseObject, [self analysisResponse:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         callback(nil, error);
@@ -72,6 +80,7 @@
     if ([LoginUserInfo getInstance].logined) {
         NSMutableDictionary *newParm = [parameters mutableCopy];
         NSString *token = [LoginUserInfo getInstance].token;
+        NSString *userId = [LoginUserInfo getInstance].userId;
         long longTime = time(NULL);
         NSString *t = [NSString stringWithFormat:@"%ld", longTime];
         NSString *sign = [NSString stringWithFormat:@"%@%@%@", t, token, APPKEY];
@@ -79,6 +88,7 @@
         newParm[@"token"] = token;
         newParm[@"t"] = t;
         newParm[@"sign"] = signMD5;
+        newParm[@"userId"] = userId;
         return [newParm copy];
     }
     return parameters;

@@ -39,6 +39,8 @@
 		F4DFC3DE1FE017F800C5FDB7 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DFC3DD1FE017F800C5FDB7 /* Tool.m */; };
 		F4DFC3E21FE1615A00C5FDB7 /* IssueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DFC3E01FE1615A00C5FDB7 /* IssueTableViewCell.m */; };
 		F4DFC3E31FE1615A00C5FDB7 /* IssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DFC3E11FE1615A00C5FDB7 /* IssueTableViewCell.xib */; };
+		F4FA44B81FE2B94F00FB0B95 /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA44B71FE2B94F00FB0B95 /* InputView.m */; };
+		F4FA44BA1FE2B95700FB0B95 /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44B91FE2B95700FB0B95 /* InputView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,9 @@
 		F4DFC3DF1FE1615A00C5FDB7 /* IssueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueTableViewCell.h; sourceTree = "<group>"; };
 		F4DFC3E01FE1615A00C5FDB7 /* IssueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewCell.m; sourceTree = "<group>"; };
 		F4DFC3E11FE1615A00C5FDB7 /* IssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueTableViewCell.xib; sourceTree = "<group>"; };
+		F4FA44B61FE2B94F00FB0B95 /* InputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		F4FA44B71FE2B94F00FB0B95 /* InputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
+		F4FA44B91FE2B95700FB0B95 /* InputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +246,9 @@
 				F4DFC3DF1FE1615A00C5FDB7 /* IssueTableViewCell.h */,
 				F4DFC3E01FE1615A00C5FDB7 /* IssueTableViewCell.m */,
 				F4DFC3E11FE1615A00C5FDB7 /* IssueTableViewCell.xib */,
+				F4FA44B61FE2B94F00FB0B95 /* InputView.h */,
+				F4FA44B71FE2B94F00FB0B95 /* InputView.m */,
+				F4FA44B91FE2B95700FB0B95 /* InputView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +332,7 @@
 				F4D153D51FD580B200A6360C /* IssueViewController.storyboard in Resources */,
 				F4DFC3E31FE1615A00C5FDB7 /* IssueTableViewCell.xib in Resources */,
 				F43D3AD71FDC382D0031D21E /* en.po in Resources */,
+				F4FA44BA1FE2B95700FB0B95 /* InputView.xib in Resources */,
 				F43D3ADD1FDC382D0031D21E /* en.mo in Resources */,
 				F480903A1FD98AA20058C45D /* RegisterViewController.storyboard in Resources */,
 				F4D2FE7D1FD82F0600D83091 /* LoginViewController.storyboard in Resources */,
@@ -343,6 +352,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PYO/Pods-PYO-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -403,6 +413,7 @@
 				F43D3AB01FDC37D60031D21E /* MO.cpp in Sources */,
 				F43D3AB21FDC37D60031D21E /* Entry.cpp in Sources */,
 				F4DFC3DE1FE017F800C5FDB7 /* Tool.m in Sources */,
+				F4FA44B81FE2B94F00FB0B95 /* InputView.m in Sources */,
 				F48090351FD976CD0058C45D /* LoginUserInfo.m in Sources */,
 				F4D2FE741FD8200900D83091 /* IssueCollectionViewCell.m in Sources */,
 				F48090381FD98A960058C45D /* RegisterViewController.m in Sources */,

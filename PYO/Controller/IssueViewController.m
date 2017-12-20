@@ -13,12 +13,14 @@
 
 #import "IssueModel.h"
 
+#import "InputView.h"
+
 #import <Masonry.h>
 
 #define HeadIconSize 38
 #define kCollectionIdentifier @"PYO"
 
-@interface IssueViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface IssueViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, IssueCollectionViewCellDelegate>
 
 @property (strong, nonatomic) UILabel *navTitleLabel;
 @property (nonatomic, strong) UIButton *sendButton;
@@ -30,6 +32,8 @@
 
 @property (nonatomic, strong) NSMutableArray *issueArray;
 
+@property (nonatomic, strong) InputView *inputFieldView;
+
 @end
 
 @implementation IssueViewController
@@ -40,8 +44,9 @@
     
     [self baseSetting];
     [self loadMaskView];
+    [self registerNotification];
     LoginUserInfo *userInfo = [LoginUserInfo getInstance];
-    if (userInfo.logined) {
+    if (!userInfo.logined) {
         [self showLoginViewController];
     } else {
         // 取消注册
@@ -53,6 +58,7 @@
 //            }
 //        }];
         [self hideMaskView];
+        [self updateIssue];
     }
 }
 
@@ -96,8 +102,6 @@
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    [self getData];
-    [self registerNotification];
 }
 
 - (void)initView
@@ -126,8 +130,9 @@
 
 - (void)getData
 {
-    NSDictionary *parm = @{@"page" : @"0",
-                           @"size" : @"10",};
+    NSDictionary *parm = @{
+                           @"page" : @"0",
+                           @"size" : @"5",};
     [[RequestManager sharedManager] getWithAPI:RequestCircleList parameter:parm callback:^(NSDictionary *data, NSError *error) {
         if (error) {
             NSLog(@"%@", error);
@@ -143,14 +148,32 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.issueArray.count + 10;
+    return self.issueArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IssueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionIdentifier forIndexPath:indexPath];
-//    cell.issue = self.issueArray[indexPath.item];
+    cell.issue = self.issueArray[indexPath.item];
+    cell.delegate = self;
     return cell;
+}
+
+#pragma mark -  UICollectionView Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+}
+
+#pragma mark -  IssueCollectionViewCell Delegate
+
+- (void)commentButtonClick:(IssueCollectionViewCell *)cell
+{
+//    [self.inputFieldView.inputField becomeFirstResponder];
+    [self.inputFieldView showInputViewReturnButtonClick:^(NSString *inputString) {
+        NSLog(@"%@   %@", cell.issue.topicContent, inputString);
+    }];
 }
 
 #pragma mark -  event handle
@@ -161,7 +184,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
-    
+
     UIAlertAction *tackPhotoAction = [UIAlertAction actionWithTitle:T(@"拍摄")
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * action) {
@@ -172,9 +195,9 @@
                                                         handler:^(UIAlertAction * action) {
                                                             [self showIssueSendViewController];
                                                         }];
-    
+
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:T(@"取消") style:UIAlertActionStyleCancel handler:nil];
-    
+
     [alert addAction:tackPhotoAction];
     [alert addAction:albumAction];
     [alert addAction:cancelAction];
@@ -191,6 +214,11 @@
 {
     UserInfoViewController *userInfoVc = [UIStoryboard storyboardWithName:NSStringFromClass([UserInfoViewController class]) bundle:nil].instantiateInitialViewController;
     [self.navigationController pushViewController:userInfoVc animated:YES];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark -  lazy load
@@ -239,6 +267,7 @@
         _collectionView.dataSource = self;
         _collectionView.delegate   = self;
         [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([IssueCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:kCollectionIdentifier];
+        [_collectionView setShowsVerticalScrollIndicator:false];
     }
     return _collectionView;
 }
@@ -259,6 +288,20 @@
         _issueArray = [[NSMutableArray alloc] init];
     }
     return _issueArray;
+}
+
+- (InputView *)inputFieldView
+{
+    if (!_inputFieldView) {
+        _inputFieldView = [[InputView alloc] init];
+        [self.view addSubview:_inputFieldView];
+//        [_inputFieldView setFrame:CGRectMake(0, myHeight - 64, myWidth, 64)];
+        [_inputFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.trailing.bottom.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+            make.height.mas_equalTo(64);
+        }];
+    }
+    return _inputFieldView;
 }
 
 @end

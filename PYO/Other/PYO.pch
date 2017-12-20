@@ -36,6 +36,11 @@
 #import "StringConst.h"
 
 #import "Tool.h"
+
+#define myWidth  [UIScreen mainScreen].bounds.size.width
+#define myHeight [UIScreen mainScreen].bounds.size.height
+
+
 #endif
 
 

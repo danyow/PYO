@@ -8,10 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@class IssueModel;
+@class IssueModel, IssueCollectionViewCell;
+
+@protocol IssueCollectionViewCellDelegate<NSObject>
+
+@optional
+- (void)commentButtonClick:(IssueCollectionViewCell *)cell;
+
+@end
+
 
 @interface IssueCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) IssueModel *issue;
+
+@property (nonatomic, weak) id<IssueCollectionViewCellDelegate> delegate;
 
 @end

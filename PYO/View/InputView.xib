@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InputView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbG-MF-Xjf">
+                    <rect key="frame" x="311" y="0.0" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="CbG-MF-Xjf" secondAttribute="height" multiplier="1:1" id="yDB-hh-ZJW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                    <state key="normal" title="+"/>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入你的内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxN-So-hbJ">
+                    <rect key="frame" x="64" y="0.0" width="311" height="64"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lxN-So-hbJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="64" id="8fD-6f-Z7t"/>
+                <constraint firstItem="CbG-MF-Xjf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9qQ-A3-gnW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lxN-So-hbJ" secondAttribute="bottom" id="Ask-Yz-v63"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CbG-MF-Xjf" secondAttribute="trailing" id="Bf9-He-l65"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="CbG-MF-Xjf" secondAttribute="bottom" id="P4E-a7-S1W"/>
+                <constraint firstItem="lxN-So-hbJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jCw-TP-bb0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lxN-So-hbJ" secondAttribute="trailing" id="zqv-on-DL4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="inputField" destination="lxN-So-hbJ" id="evf-Sa-Gi9"/>
+            </connections>
+            <point key="canvasLocation" x="-404" y="-123"/>
+        </view>
+    </objects>
+</document>

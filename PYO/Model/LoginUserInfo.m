@@ -11,7 +11,7 @@
 #define USER_LOGINSTR       @"userLoginStr"
 #define USER_PASSWORD       @"userPassword"
 #define USER_TOKEN          @"token"
-
+#define USER_USERID         @"userId"
 @implementation LoginUserInfo
 
 + (instancetype)getInstance
@@ -43,14 +43,16 @@
     return self.token != nil;
 }
 
-- (void)saveWithUserLoginStr:(NSString *)userLoginStr userPassword:(NSString *)userPassword token:(NSString *)token
+- (void)saveWithUserLoginStr:(NSString *)userLoginStr userPassword:(NSString *)userPassword data:(NSDictionary *)data
 {
     self.userLoginStr = userLoginStr;
     self.userPassword = userPassword;
-    self.token = token;
-    NSDictionary *userDict = @{USER_LOGINSTR : userLoginStr,
-                               USER_PASSWORD : userPassword,
-                               USER_TOKEN    : token};
+    self.token = data[USER_TOKEN];
+    self.userId = data[USER_USERID] ? : @"";
+    NSDictionary *userDict = @{USER_LOGINSTR : self.userLoginStr,
+                               USER_PASSWORD : self.userPassword,
+                               USER_TOKEN    : self.token,
+                               USER_USERID   : self.userId};
     [[NSUserDefaults standardUserDefaults] setObject:userDict forKey:USER_INFO];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

@@ -11,4 +11,5 @@ target 'PYO' do
   pod 'Masonry'
   pod 'YYModel'
   pod 'AliyunOSSiOS'
+  pod 'IQKeyboardManager'
 end
